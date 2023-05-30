@@ -1,5 +1,6 @@
 package com.example.demowebapplabo.services;
 
+import com.example.demowebapplabo.models.dtos.AnimalDTO;
 import com.example.demowebapplabo.models.entities.Animal;
 import com.example.demowebapplabo.models.forms.AnimalForm;
 
@@ -7,11 +8,11 @@ import java.util.List;
 
 public interface AnimalService {
 
-    Animal add(AnimalForm a);
+    void add(AnimalForm a);
 
-    Animal getOne(Long id);
+    AnimalDTO getOne(Long id);
 
-    List<Animal> getAll();
+    List<AnimalDTO> getAll();
 
     Animal update(Long id, AnimalForm a);
 

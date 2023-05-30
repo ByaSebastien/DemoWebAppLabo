@@ -31,7 +31,7 @@ public class AddAnimalServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
 
         AnimalForm animalForm = new AnimalForm(name);
@@ -52,8 +52,8 @@ public class AddAnimalServlet extends HttpServlet {
             request.setAttribute("name",name);
             request.getRequestDispatcher("/WEB-INF/pages/animalForm.jsp").forward(request,response);
         }else{
-            Animal animal = animalService.add(animalForm);
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            animalService.add(animalForm);
+            response.sendRedirect(request.getContextPath() + "/animal");
         }
     }
 }

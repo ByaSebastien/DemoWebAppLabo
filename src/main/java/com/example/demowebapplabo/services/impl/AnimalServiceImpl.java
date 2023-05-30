@@ -1,5 +1,6 @@
 package com.example.demowebapplabo.services.impl;
 
+import com.example.demowebapplabo.models.dtos.AnimalDTO;
 import com.example.demowebapplabo.models.entities.Animal;
 import com.example.demowebapplabo.models.forms.AnimalForm;
 import com.example.demowebapplabo.repositories.AnimalRepository;
@@ -9,6 +10,7 @@ import jakarta.inject.Named;
 import org.hibernate.service.spi.InjectService;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import jakarta.inject.Inject;
 
@@ -20,19 +22,25 @@ public class AnimalServiceImpl implements AnimalService, Serializable {
     private AnimalRepository animalRepository;
 
     @Override
-    public Animal add(AnimalForm a) {
-        return animalRepository.add(a.toEntity());
+    public void add(AnimalForm a) {
+        animalRepository.add(a.toEntity());
     }
 
     @Override
-    public Animal getOne(Long id) {
+    public AnimalDTO getOne(Long id) {
         return null;
     }
 
     @Override
-    public List<Animal> getAll() {
-        return null;
+    public List<AnimalDTO> getAll() {
+        List<AnimalDTO> animalsDTO = new ArrayList<>();
+        List<Animal> animals = animalRepository.getAll();
+        for (Animal a : animals){
+            animalsDTO.add(AnimalDTO.fromEntity(a));
+        }
+        return  animalsDTO;
     }
+
 
     @Override
     public Animal update(Long id, AnimalForm a) {

@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1>animalForm work.</h1>
-    <form action="../animal/add" method="post">
+    <form action="../animal/add" method="post" accept-charset="UTF-8">
         <label for="name">Nom : </label>
         <input type="text" id="name" name="name" maxlength="50" value="${name}">
         <c:if test="${nameError != null}">

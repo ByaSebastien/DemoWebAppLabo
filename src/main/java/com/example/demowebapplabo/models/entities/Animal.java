@@ -1,13 +1,11 @@
 package com.example.demowebapplabo.models.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 
-@Entity @Builder @AllArgsConstructor @NoArgsConstructor
+@Entity @Builder @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 public class Animal implements Serializable {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

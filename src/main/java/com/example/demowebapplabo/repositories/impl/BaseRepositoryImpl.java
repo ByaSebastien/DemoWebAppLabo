@@ -1,16 +1,15 @@
 package com.example.demowebapplabo.repositories.impl;
 
+import com.example.demowebapplabo.models.entities.Animal;
 import com.example.demowebapplabo.repositories.BaseRepository;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import jakarta.persistence.*;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Optional;
 
 
-public class BaseRepositoryImpl<TKey,TEntity> implements BaseRepository<TKey,TEntity> {
+public abstract class BaseRepositoryImpl<TKey,TEntity extends Object> implements BaseRepository<TKey,TEntity> {
 
     protected EntityManagerFactory emf;
     protected EntityManager em;
@@ -39,9 +38,7 @@ public class BaseRepositoryImpl<TKey,TEntity> implements BaseRepository<TKey,TEn
     }
 
     @Override
-    public List<TEntity> getAll() {
-        return null;
-    }
+    public abstract List<TEntity> getAll();
 
     @Override
     public TEntity update(TEntity entity) {
